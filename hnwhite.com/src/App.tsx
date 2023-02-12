@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { RecoilRoot } from "recoil";
+import {
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from "@mui/material/styles";
+import { deepmerge } from "@mui/utils";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { getDesignTokens, getThemedComponents } from "./Theme";
+import { ColorModeContext } from "./contexts/color-context";
+import DrawerLeft from "./pages/main_page/Main_Page";
 
-function App() {
+export default function App() {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = React.useState<"light" | "dark">("light");
+
+  React.useEffect(() => {
+    setMode(prefersDarkMode ? "light" : "dark");
+  }, [prefersDarkMode]);
+
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    []
+  );
+
+  let theme = React.useMemo(
+    () =>
+      createTheme(deepmerge(getDesignTokens(mode), getThemedComponents(mode))),
+    [mode]
+  );
+
+  theme = responsiveFontSizes(theme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <RecoilRoot>
+          <DrawerLeft></DrawerLeft>
+        </RecoilRoot>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
-
-export default App;
