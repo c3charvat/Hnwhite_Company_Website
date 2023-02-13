@@ -7,11 +7,12 @@ import AppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
+import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -22,6 +23,11 @@ import LightDarkSwitch from "./components/LightDarkSwitch";
 import FooterContent from "../footer/footer";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "../other_pages/Home";
+import Hnw_Story from "../other_pages/Hnw_Story";
+import Archives from "../other_pages/Archives";
+import Collection from "../other_pages/Collection";
+import Famous_Artists from "../other_pages/Famous_Artists";
+import Store from "../other_pages/Store/Store";
 const drawerWidth = 240;
 const router_arry = [
   "/home",
@@ -29,7 +35,8 @@ const router_arry = [
   "/our_collection",
   "/the_archives",
   "/famous_artists",
-  "wam",
+  "/store",
+  "/404",
 ];
 
 export default function PersistentDrawerLeft() {
@@ -67,6 +74,7 @@ export default function PersistentDrawerLeft() {
               "Our Collection",
               "The Archives",
               "Famous Artists",
+              "Store"
             ].map((text, index) => (
               <ListItem
                 key={text}
@@ -76,7 +84,12 @@ export default function PersistentDrawerLeft() {
               >
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    {index === 0 ? <HomeOutlinedIcon />:'' }
+                    {index === 1 ? <AutoStoriesOutlinedIcon/>:'' }
+                    {index === 2 ? < AutoAwesomeOutlinedIcon/>:'' }
+                    {index === 3 ? <Inventory2OutlinedIcon />:'' }
+                    {index === 4 ? <MusicNoteOutlinedIcon />:'' }
+                    {index === 5 ? < LocalGroceryStoreOutlinedIcon/>:'' }
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
@@ -87,6 +100,11 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Routes>
         <Route path="/home" element={<Home/>}/>
+        <Route path="/the_white_story" element={<Hnw_Story/>}/>
+        <Route path="/our_collection" element={<Collection/>}/>
+        <Route path="/the_archives" element={<Archives/>}/>
+        <Route path="/famous_artists" element={<Famous_Artists/>}/>
+        <Route path="/store" element={<Store/>}/>
       </Routes>
     </Box>
   );

@@ -5,11 +5,11 @@ function apples() {
   return 0;
 }
 
-export default function HomeContent() {
+export default function HnwStoryContent() {
   return (
     <React.Fragment>
       <Box component="main" sx={{ flexGrow: 1, p: 3 , paddingTop:'80px'}}> 
-        <Typography paragraph>Home</Typography>
+        <Typography paragraph>Our Story</Typography>
         <Typography paragraph>Content 1</Typography>
       </Box>
     </React.Fragment>
