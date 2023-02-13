@@ -10,7 +10,7 @@ export default function FooterContent() {
     return (
         <React.Fragment>
             <center>
-            <img src={logo}></img>
+            <img src={logo} height={'175px'}></img>
             </center>
             <Typography align='center' fontSize={15}>
             Ⓒ2022-2023 The Hnwhite Company 

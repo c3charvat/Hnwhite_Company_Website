@@ -10,6 +10,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { getDesignTokens, getThemedComponents } from "./Theme";
 import { ColorModeContext } from "./contexts/color-context";
 import DrawerLeft from "./pages/main_page/Main_Page";
+import { BrowserRouter } from "react-router-dom";
 
 export default function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -40,7 +41,9 @@ export default function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <RecoilRoot>
-          <DrawerLeft></DrawerLeft>
+          <BrowserRouter>
+            <DrawerLeft></DrawerLeft>
+          </BrowserRouter>
         </RecoilRoot>
       </ThemeProvider>
     </ColorModeContext.Provider>
