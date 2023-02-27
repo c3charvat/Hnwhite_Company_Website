@@ -23,32 +23,42 @@ import LightDarkSwitch from "./components/LightDarkSwitch";
 import FooterContent from "../footer/footer";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "../other_pages/Home";
-import Hnw_Story from "../other_pages/Hnw_Story";
+import Hnw_Story from "../other_pages/HnwStory";
 import Archives from "../other_pages/Archives";
 import Collection from "../other_pages/Collection";
-import Famous_Artists from "../other_pages/Famous_Artists";
-import Store from "../other_pages/Store/Store";
+import Famous_Artists from "../other_pages/FamousArtists";
+import TromboneStoreContent from "../Store/trombones_page/Trombone_store";
+import LowBrassStoreContent from "../Store/low_brass_page/Low_brass_store";
+import TrumpetStoreContent from "../Store/trumpets_page/Trumpet_store";
+import WoodwindsStoreContent from "../Store/woodwinds_page/Woodwinds_store";
+import StoreLandingPage from "../Store/Landing_page";
+var logo= require('./img/1960_Factory_Out_Line.png');
 const drawerWidth = 240;
 const router_arry = [
-  "/home",
+  "/",
   "/the_white_story",
   "/our_collection",
   "/the_archives",
   "/famous_artists",
   "/store",
+  "/store_landing_page",
+  "/store/trumpets",
+  "/store/trombones",
+  "/store/low_brass",
+  "/store/woodwinds",
   "/404",
 ];
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex",backgroundImage:`url(${logo})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundPositionY:'50px',backgroundSize:'40% 40%'}}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
-        <Toolbar sx={{ display: "flex" }}>
+        <Toolbar sx={{ display: "flex" ,backgroundColor:'transparent'}}>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             insert hnwhite logo here
           </Typography>
@@ -59,22 +69,22 @@ export default function PersistentDrawerLeft() {
       </AppBar>
       <Drawer
         variant="permanent"
+        PaperProps={{sx:{backgroundColor:'transparent'} }}
         sx={{
           width: drawerWidth,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: { width: drawerWidth, border: "none" },
         }}
       >
-        <Toolbar />
-        <Box sx={{ overflow: "auto" }}>
-          <List>
+        <Toolbar/>
+          <List sx={{backgroundColor:'transparent'}}>
             {[
               "Home",
               "The White Story",
               "Our Collection",
               "The Archives",
               "Famous Artists",
-              "Store"
+              "Store",
             ].map((text, index) => (
               <ListItem
                 key={text}
@@ -82,7 +92,7 @@ export default function PersistentDrawerLeft() {
                 component={Link}
                 to={router_arry[index]}
               >
-                <ListItemButton>
+                <ListItemButton sx={{color:theme.palette.primary.main}}>
                   <ListItemIcon>
                     {index === 0 ? <HomeOutlinedIcon />:'' }
                     {index === 1 ? <AutoStoriesOutlinedIcon/>:'' }
@@ -96,15 +106,18 @@ export default function PersistentDrawerLeft() {
               </ListItem>
             ))}
           </List>
-        </Box>
       </Drawer>
       <Routes>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path="/the_white_story" element={<Hnw_Story/>}/>
         <Route path="/our_collection" element={<Collection/>}/>
         <Route path="/the_archives" element={<Archives/>}/>
         <Route path="/famous_artists" element={<Famous_Artists/>}/>
-        <Route path="/store" element={<Store/>}/>
+        <Route path="/store" element={<StoreLandingPage/>}/>
+        <Route path="/store/trumpets" element={<TrumpetStoreContent/>}/>
+        <Route path="/store/trombones" element={<TromboneStoreContent/>}/>
+        <Route path="/store/low_brass" element={<LowBrassStoreContent/>}/>
+        <Route path="/store/woodwinds" element={<WoodwindsStoreContent/>}/>
       </Routes>
     </Box>
   );
