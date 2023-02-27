@@ -3,23 +3,24 @@ import * as React from "react";
 import { Typography, Box, Card, CardActions,Button, CardContent} from "@mui/material";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-var logo= require('../Static_Img/Background_V1.gif');
+var logo= require('./static_Img/Background_V1.gif');
+var apples = require("./img/172663_2.jpg")
+
+function getImagePaths(directory:any) {
+  let images:any = [];
+  directory.keys().map((item:any, index:unknown) => images.push(item.replace("./", "")));
+  //console.log(images)
+  return images;
+}
 
 const directory = require.context("./img", false, /\.(png|jpe?g|svg)$/);
 let imagePaths = getImagePaths(directory);
 
 let images:any = [];
+//console.log(imagePaths)
 imagePaths.map((path:any) => images.push(require("./img/" + path)));
 
-
-function getImagePaths(directory:any) {
-  let images:any = [];
-  directory.keys().map((item:any, index:unknown) => images.push(item.replace("./", "")));
-  console.log(images)
-  return images;
-}
-
-export default function StoreContent() {
+export default function StoreListing() {
   return (
     <React.Fragment>
       <Box component="main" sx={{ flexGrow: 1, p: 3 , paddingTop:'80px',backgroundImage:`url(${logo})`,width: '100vw', height: '100vh'}}> 
@@ -42,3 +43,4 @@ export default function StoreContent() {
     </React.Fragment>
   );
 }
+

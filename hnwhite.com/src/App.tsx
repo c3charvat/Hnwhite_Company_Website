@@ -1,5 +1,4 @@
 import React from "react";
-import { RecoilRoot } from "recoil";
 import {
   ThemeProvider,
   createTheme,
@@ -11,6 +10,7 @@ import { getDesignTokens, getThemedComponents } from "./Theme";
 import { ColorModeContext } from "./contexts/color-context";
 import DrawerLeft from "./pages/main_page/Main_Page";
 import { BrowserRouter } from "react-router-dom";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -40,11 +40,11 @@ export default function App() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <RecoilRoot>
+        <PayPalScriptProvider options={{ "client-id": "test" }}>
           <BrowserRouter>
             <DrawerLeft></DrawerLeft>
           </BrowserRouter>
-        </RecoilRoot>
+        </PayPalScriptProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
