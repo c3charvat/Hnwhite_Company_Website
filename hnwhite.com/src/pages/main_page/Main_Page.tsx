@@ -21,10 +21,10 @@ import LightDarkSwitch from "./components/LightDarkSwitch";
 import FooterContent from "../footer/footer";
 import {Routes, Route, Link } from "react-router-dom";
 import Home from "../other_pages/Home";
-import Hnw_Story from "../other_pages/HnwStory";
+import HnwStory from "../other_pages/HnwStory";
 import Archives from "../other_pages/Archives";
 import Collection from "../other_pages/Collection";
-import Famous_Artists from "../other_pages/FamousArtists";
+import FamousArtists from "../other_pages/FamousArtists";
 import TromboneStoreContent from "../Store/trombones_page/Trombone_store";
 import LowBrassStoreContent from "../Store/low_brass_page/Low_brass_store";
 import TrumpetStoreContent from "../Store/trumpets_page/Trumept_store";
@@ -114,10 +114,10 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/the_white_story" element={<Hnw_Story/>}/>
+        <Route path="/the_white_story" element={<HnwStory/>}/>
         <Route path="/our_collection" element={<Collection/>}/>
         <Route path="/the_archives" element={<Archives/>}/>
-        <Route path="/famous_artists" element={<Famous_Artists/>}/>
+        <Route path="/famous_artists" element={<FamousArtists/>}/>
         <Route path="/store" element={<StoreLandingPage/>}/>
         <Route path="/store/trumpets" element={<TrumpetStoreContent/>}/>
         <Route path="/store/trombones" element={<TromboneStoreContent/>}/>

@@ -4,18 +4,21 @@ import {
   Box,
   Card,
   CardActions,
+  Button, 
+  Modal,
 } from "@mui/material";
 import * as _ from "lodash";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { PayPalButtons} from "@paypal/react-paypal-js";
+import BasicModal from "../Store_modal";
 
 var logo = require("../static_Img/Background_V1.gif");
 
 function getImagePaths(directory: any) {
   let imagePath: Array<any> = [];
   let images: Array<Array<any>> = [];
-  directory.keys().map((item: any, index: unknown) => {
+  directory.keys().map((item: any) => {
     imagePath.push(item.replace("./", ""));
     item = item.replace("./item1/", "");
     item = item.replace("./item2/", "");
@@ -36,6 +39,8 @@ function getJsonPaths(directory: any) {
   });
   return { jsonData, jsonPath };
 }
+
+
 const directory = require.context("./img/", true, /\.(png|jpe?g|svg)$/);
 const jsonDirectory = require.context("./img/", true, /\.json$/);
 //console.log(directory);
@@ -73,7 +78,7 @@ export default function LowBrassStoreContent() {
       >
         {imageChunks.map((imageArray: any, index: number) => (
           <div>
-            <Card sx={{ margin: "5px", height: "500px", width: "400px" }}>
+            <Card sx={{ margin: "5px", height: "500px", width: "410px" }}>
               <center>
                 <Typography
                   paragraph
@@ -88,8 +93,7 @@ export default function LowBrassStoreContent() {
                 >
                   {jsonData[index].title}
                 </Typography>
-              </center>
-              <Box sx={{ height: "400px", width: "400px" }}>
+              <Box sx={{ marginleft:'10px', height: "400px", width: "400px" }}>
                 <Carousel autoPlay={false} showThumbs={false}>
                   {imageChunks[index].map((image: any, index: any) => (
                     <div key={index}>
@@ -98,8 +102,9 @@ export default function LowBrassStoreContent() {
                   ))}
                 </Carousel>
               </Box>
+              </center>
               <CardActions
-                sx={{ marginLeft: "125px", padding: "15px", scale: "1.5" }}
+                sx={{ marginLeft: "70px", padding: "15px", scale: "1.5" }}
               >
                 <Box>
                   <PayPalButtons
@@ -123,6 +128,7 @@ export default function LowBrassStoreContent() {
                     }}
                   />
                 </Box>
+                <BasicModal Title={jsonData[index].title} Data={jsonData[index].description}></BasicModal>
               </CardActions>
             </Card>
           </div>
