@@ -17,11 +17,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import LightDarkSwitch from "./components/LightDarkSwitch";
 import FooterContent from "../footer/footer";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link } from "react-router-dom";
 import Home from "../other_pages/Home";
 import Hnw_Story from "../other_pages/HnwStory";
 import Archives from "../other_pages/Archives";
@@ -29,9 +27,9 @@ import Collection from "../other_pages/Collection";
 import Famous_Artists from "../other_pages/FamousArtists";
 import TromboneStoreContent from "../Store/trombones_page/Trombone_store";
 import LowBrassStoreContent from "../Store/low_brass_page/Low_brass_store";
-import TrumpetStoreContent from "../Store/trumpets_page/Trumpet_store";
+import TrumpetStoreContent from "../Store/trumpets_page/Trumept_store";
 import WoodwindsStoreContent from "../Store/woodwinds_page/Woodwinds_store";
-import StoreLandingPage from "../Store/Landing_page";
+import StoreLandingPage from "../Store/landing_page/Landing_page";
 var logo= require('./img/1960_Factory_Out_Line.png');
 const drawerWidth = 240;
 const router_arry = [
@@ -41,7 +39,6 @@ const router_arry = [
   "/the_archives",
   "/famous_artists",
   "/store",
-  "/store_landing_page",
   "/store/trumpets",
   "/store/trombones",
   "/store/low_brass",
@@ -85,6 +82,10 @@ export default function PersistentDrawerLeft() {
               "The Archives",
               "Famous Artists",
               "Store",
+              "Store: Trumpet",
+              "Store: Tromebone",
+              "Store: Low Brass",
+              "Store: Woodwinds",
             ].map((text, index) => (
               <ListItem
                 key={text}
@@ -100,6 +101,10 @@ export default function PersistentDrawerLeft() {
                     {index === 3 ? <Inventory2OutlinedIcon />:'' }
                     {index === 4 ? <MusicNoteOutlinedIcon />:'' }
                     {index === 5 ? < LocalGroceryStoreOutlinedIcon/>:'' }
+                    {index === 6 ? < LocalGroceryStoreOutlinedIcon/>:'' }
+                    {index === 7 ? < LocalGroceryStoreOutlinedIcon/>:'' }
+                    {index === 8 ? < LocalGroceryStoreOutlinedIcon/>:'' }
+                    {index === 9 ? < LocalGroceryStoreOutlinedIcon/>:'' }
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>

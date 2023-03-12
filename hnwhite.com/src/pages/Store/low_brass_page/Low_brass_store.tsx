@@ -4,16 +4,11 @@ import {
   Box,
   Card,
   CardActions,
-  Button,
-  CardContent,
 } from "@mui/material";
 import * as _ from "lodash";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import { chunk } from "lodash";
-import CSS from "csstype";
-import { width } from "@mui/system";
+import { PayPalButtons} from "@paypal/react-paypal-js";
 
 var logo = require("../static_Img/Background_V1.gif");
 

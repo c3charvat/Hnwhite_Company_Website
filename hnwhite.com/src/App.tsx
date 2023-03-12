@@ -40,7 +40,7 @@ export default function App() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <PayPalScriptProvider options={{ "client-id": "test" }}>
+        <PayPalScriptProvider options={{ "client-id": "AdH1ezK1Wuo1CiHwdxkuNilHfl5NYaOAkWqgzheVGQmA2bUoHjm3uCL4MLwwuMktNp_ZAtOHLoA-KQLG" }}>
           <BrowserRouter>
             <DrawerLeft></DrawerLeft>
           </BrowserRouter>

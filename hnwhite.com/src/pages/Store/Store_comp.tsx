@@ -1,10 +1,9 @@
 
 import * as React from "react";
-import { Typography, Box, Card, CardActions,Button, CardContent} from "@mui/material";
+import { Typography, Box, Card, CardActions,Button} from "@mui/material";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 var logo= require('./static_Img/Background_V1.gif');
-var apples = require("./img/172663_2.jpg")
 
 function getImagePaths(directory:any) {
   let images:any = [];
